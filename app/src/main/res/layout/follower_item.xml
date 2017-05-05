@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/inner_padding_medium">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/inner_padding_medium"
+        android:paddingRight="@dimen/inner_padding_medium"
+        android:paddingTop="@dimen/inner_padding_small"
+        android:paddingBottom="@dimen/inner_padding_small">
+        <ImageView
+            android:id="@+id/follower_avatar"
+            android:layout_width="@dimen/avatar_size_medium"
+            android:layout_height="@dimen/avatar_size_medium"
+            android:padding="@dimen/avatar_padding_medium"
+            android:src="@drawable/ic_user"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/inner_padding_medium">
+            <TextView
+                android:id="@+id/follower_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_marginBottom="@dimen/inner_padding_small"
+                android:text="username"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:padding="@dimen/icon_padding_small"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_liked"/>
+                <TextView
+                    android:id="@+id/follower_likes_count"
+                    android:paddingLeft="@dimen/inner_padding_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:text="255"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

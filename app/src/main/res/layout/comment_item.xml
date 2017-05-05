@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/inner_padding_medium">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/inner_padding_medium"
+        android:paddingRight="@dimen/inner_padding_medium"
+        android:paddingTop="@dimen/inner_padding_small"
+        android:paddingBottom="@dimen/inner_padding_small">
+        <ImageView
+            android:id="@+id/comment_avatar"
+            android:layout_width="@dimen/avatar_size_medium"
+            android:layout_height="@dimen/avatar_size_medium"
+            android:src="@drawable/ic_user"
+            android:padding="@dimen/avatar_padding_medium"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/inner_padding_medium">
+            <TextView
+                android:id="@+id/comment_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:layout_marginBottom="@dimen/inner_padding_small"
+                android:text="username"/>
+            <TextView
+                android:id="@+id/comment_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:layout_marginBottom="@dimen/inner_padding_small"
+                android:text="adbdfa;sdl sad ;asdl asld ;asld;asedwad [qd ashd asdjsad "/>
+            <TextView
+                android:id="@+id/comment_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:text="25.05.2017"
+                android:textAlignment="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

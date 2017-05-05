@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/comment_panel"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/inner_padding_medium"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/comment_input"
+            android:padding="@dimen/inner_padding_small"
+            android:inputType="textMultiLine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/comment_hint"
+            android:text=""
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/comment_action_send"
+            android:layout_width="wrap_content"
+            android:minWidth="@dimen/action_icon_medium"
+            android:layout_height="@dimen/action_icon_medium"
+            android:background="@color/colorTransparent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/action_icon_padding_medium"
+            android:src="@drawable/ic_action_send" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/comments_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/comment_panel"
+        android:background="@color/colorBack"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

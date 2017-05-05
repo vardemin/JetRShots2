@@ -1,0 +1,78 @@
+package vardemin.com.jetrshots2.models;
+
+import java.util.Date;
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Shot extends RealmObject {
+    @PrimaryKey
+    private int id;
+    private User user;
+    private String title;
+    private String description;
+    private ShotImage images;
+    private int likes_count;
+    private int comments_count;
+    private boolean isLiked;
+    private Date updated_at;
+
+    public Shot() {}
+
+    public Shot(int id, User user, String title, String description, ShotImage images, int likes_count, int comments_count, Date updated_at, boolean isLiked) {
+        this.id = id;
+        this.user = user;
+        this.title = title;
+        this.description = description;
+        this.images = images;
+        this.likes_count = likes_count;
+        this.comments_count = comments_count;
+        this.updated_at = updated_at;
+        this.isLiked = isLiked;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+
+    public int getLikes_count() {
+        return likes_count;
+    }
+
+    public int getComments_count() {
+        return comments_count;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
+
+    public ShotImage getImages() {
+        return images;
+    }
+
+    public String getImageUrl() {
+        return images.getBestImageUrl();
+    }
+
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+}

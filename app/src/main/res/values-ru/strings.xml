@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Джет Шотс</string>
+    <string name="profile_followers">Подписчики</string>
+    <string name="profile_likes">Понравилось</string>
+    <string name="login">Войти</string>
+    <string name="comment_hint">Введите текст</string>
+    <string name="error_network">Проверьте Интернет Соединение</string>
+    <string name="title_shots">Записи</string>
+</resources>

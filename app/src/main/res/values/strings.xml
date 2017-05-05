@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Jet Shots</string>
+    <string name="profile_followers">Followers</string>
+    <string name="profile_likes">Likes</string>
+    <string name="login">Login</string>
+    <string name="comment_hint">Input text</string>
+    <string name="error_network">Check Internet connection</string>
+    <string name="shots_tag" translatable="false">shots</string>
+    <string name="title_shots">Shots</string>
+
+</resources>
