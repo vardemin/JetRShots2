@@ -25,15 +25,19 @@
             android:paddingLeft="@dimen/inner_padding_medium">
             <TextView
                 android:id="@+id/like_username"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:layout_marginBottom="@dimen/inner_padding_small"
                 android:text="username"/>
             <TextView
                 android:id="@+id/like_post_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:layout_marginBottom="@dimen/inner_padding_small"
                 android:text="Post TITLE "/>

@@ -51,7 +51,11 @@ public class LikePresenter implements LikesContract.Presenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(likes -> {
-                   localDataRepository.save(likes);
+                    User user = localDataRepository.getUser(username);
+                    for (Like like: likes) {
+                        like.setUser(user);
+                    }
+                    localDataRepository.save(likes);
                 });
     }
 }

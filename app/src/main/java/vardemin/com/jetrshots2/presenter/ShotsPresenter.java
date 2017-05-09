@@ -14,8 +14,6 @@ import vardemin.com.jetrshots2.data.local.ILocalDataRepository;
 import vardemin.com.jetrshots2.data.remote.IRemoteDataRepository;
 import vardemin.com.jetrshots2.events.TransitionEvent;
 import vardemin.com.jetrshots2.models.Shot;
-import vardemin.com.jetrshots2.models.User;
-import vardemin.com.jetrshots2.util.Constant;
 
 import static vardemin.com.jetrshots2.util.Constant.COMMENT_KEY;
 import static vardemin.com.jetrshots2.util.Constant.PROFILE_KEY;
@@ -63,8 +61,23 @@ public class ShotsPresenter implements ShotsContract.Presenter {
 
     @Override
     public void likeClick(int shot) {
-        localDataRepository.likeShot(shot);
-        remoteDataRepository.likeShot(String.valueOf(shot), localDataRepository.getToken());
+        Shot likingShot = localDataRepository.getShot(shot);
+        if(!likingShot.getLiked()) {
+            remoteDataRepository.likeShot(String.valueOf(shot), localDataRepository.getToken())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(like -> {
+                        like.setShot(likingShot);
+                        localDataRepository.save(like);
+                        localDataRepository.likeShot(shot,true);
+                    });
+        }
+        else {
+            remoteDataRepository.unlikeShot(String.valueOf(shot), localDataRepository.getToken());
+            localDataRepository.likeShot(shot,false);
+        }
+        //localDataRepository.likeShot(shot);
+
     }
 
     @Override

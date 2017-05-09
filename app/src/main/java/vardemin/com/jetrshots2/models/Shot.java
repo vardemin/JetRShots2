@@ -1,6 +1,7 @@
 package vardemin.com.jetrshots2.models;
 
 import java.util.Date;
+import java.util.Objects;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -14,12 +15,12 @@ public class Shot extends RealmObject {
     private ShotImage images;
     private int likes_count;
     private int comments_count;
-    private boolean isLiked;
+    private boolean liked;
     private Date updated_at;
 
     public Shot() {}
 
-    public Shot(int id, User user, String title, String description, ShotImage images, int likes_count, int comments_count, Date updated_at, boolean isLiked) {
+    public Shot(int id, User user, String title, String description, ShotImage images, int likes_count, int comments_count, Date updated_at) {
         this.id = id;
         this.user = user;
         this.title = title;
@@ -28,7 +29,6 @@ public class Shot extends RealmObject {
         this.likes_count = likes_count;
         this.comments_count = comments_count;
         this.updated_at = updated_at;
-        this.isLiked = isLiked;
     }
 
     public int getId() {
@@ -44,7 +44,7 @@ public class Shot extends RealmObject {
     }
 
     public String getDescription() {
-        return description;
+        return description!=null ? description.replaceAll("\\<.*?>",""): null;
     }
 
 
@@ -56,12 +56,12 @@ public class Shot extends RealmObject {
         return comments_count;
     }
 
-    public boolean isLiked() {
-        return isLiked;
+    public boolean getLiked() {
+        return liked;
     }
 
     public void setLiked(boolean liked) {
-        isLiked = liked;
+        this.liked = liked;
     }
 
     public ShotImage getImages() {
@@ -75,4 +75,9 @@ public class Shot extends RealmObject {
     public Date getUpdated_at() {
         return updated_at;
     }
+
+    public void setLikes_count(int likes_count) {
+        this.likes_count = likes_count;
+    }
+
 }

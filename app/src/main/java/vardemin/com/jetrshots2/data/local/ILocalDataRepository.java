@@ -3,6 +3,7 @@ package vardemin.com.jetrshots2.data.local;
 import java.util.List;
 
 import io.realm.RealmModel;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 import vardemin.com.jetrshots2.models.Comment;
 import vardemin.com.jetrshots2.models.Follower;
@@ -24,8 +25,11 @@ public interface ILocalDataRepository<E extends RealmModel> {
      */
     void save(E object);
 
-    void saveLikesXOR(List<Like> likes);
-    void saveFollowersXOR(List<Follower> followers);
+    /**
+     * Delete object from BD
+     * @param object obj to remove
+     */
+    void delete(RealmObject object);
 
     /**
      * Save user token
@@ -70,7 +74,8 @@ public interface ILocalDataRepository<E extends RealmModel> {
      */
     RealmResults<Comment> getShotComments(int shotId);
 
-    void likeShot(int shotId);
+
+    void likeShot(int shotId, boolean state);
 
     /**
      * Close DB connection (If no longer needed / app termination)

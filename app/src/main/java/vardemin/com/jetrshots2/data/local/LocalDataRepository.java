@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmModel;
+import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.Sort;
 import vardemin.com.jetrshots2.models.Comment;
@@ -52,34 +53,13 @@ public class LocalDataRepository implements ILocalDataRepository {
         realm.commitTransaction();
     }
 
-
     @Override
-    public void saveFollowersXOR(List list) {
-        if(list.size()<1)
-            return;
+    public void delete(RealmObject object) {
         realm.beginTransaction();
-        realm.copyToRealmOrUpdate(list);
-        RealmResults<Follower> followers = realm.where(Follower.class).equalTo("user.id", ((Follower)list.get(0)).getUser().getId()).findAll();
-        for (Follower follower: followers) {
-            if(!list.contains(follower))
-                follower.deleteFromRealm();
-        }
+        object.deleteFromRealm();
         realm.commitTransaction();
     }
 
-    @Override
-    public void saveLikesXOR(List list) {
-        if(list.size()<1)
-            return;
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(list);
-        RealmResults<Like> likes = realm.where(Like.class).equalTo("shot.user.id", ((Like)list.get(0)).getShot().getUser().getId()).findAll();
-        for (Like like: likes) {
-            if(!list.contains(like))
-                like.deleteFromRealm();
-        }
-        realm.commitTransaction();
-    }
 
     @Override
     public void cacheToken(String token) {
@@ -116,7 +96,7 @@ public class LocalDataRepository implements ILocalDataRepository {
 
     @Override
     public RealmResults<Like> getUserLikes(String username) {
-        return realm.where(Like.class).equalTo("shot.user.username", username).findAll();
+        return realm.where(Like.class).equalTo("user.username", username).findAll();
     }
 
     @Override
@@ -125,10 +105,11 @@ public class LocalDataRepository implements ILocalDataRepository {
     }
 
     @Override
-    public void likeShot(int shotId) {
+    public void likeShot(int shotId, boolean state) {
         realm.beginTransaction();
         Shot shot= realm.where(Shot.class).equalTo("id",shotId).findFirst();
-        shot.setLiked(!shot.isLiked());
+        shot.setLiked(state);
+        shot.setLikes_count(state?shot.getLikes_count()+1:shot.getLikes_count()-1);
         realm.commitTransaction();
     }
 

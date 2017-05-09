@@ -41,5 +41,9 @@ public class Like extends RealmObject {
         return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
 }

@@ -47,7 +47,7 @@ public class User extends RealmObject {
     }
 
     public String getBio() {
-        return bio;
+        return bio!=null ? bio.replaceAll("\\<.*?>",""): null;
     }
 
     public int getLikes_count() {

@@ -31,7 +31,6 @@ public class ProfilePresenter implements Presenter {
     @Override
     public void onAttach(ProfileContract.View view) {
         this.view = view;
-        Log.d("PRESENTER USER ID", username);
         view.initialize(localDataRepository.getUser(username));
     }
 

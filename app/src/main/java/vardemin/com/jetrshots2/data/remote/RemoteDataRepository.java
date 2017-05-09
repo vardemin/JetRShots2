@@ -59,7 +59,12 @@ public class RemoteDataRepository implements IRemoteDataRepository {
     }
 
     @Override
-    public void likeShot(@NonNull String shotId, @NonNull String access_token) {
-        retrofit.create(ServiceApi.class).likeShot(shotId, access_token);
+    public Observable<Like> likeShot(@NonNull String shotId, @NonNull String access_token) {
+        return retrofit.create(ServiceApi.class).likeShot(shotId, access_token);
+    }
+
+    @Override
+    public void unlikeShot(@NonNull String shotId, @NonNull String access_token) {
+        retrofit.create(ServiceApi.class).unlikeShot(shotId, access_token);
     }
 }

@@ -77,6 +77,14 @@ public interface IRemoteDataRepository {
      * Post to like shot
      * @param shotId shot id
      * @param access_token ACCESS TOKEN
+     * @return Like object
      */
-    void likeShot(@NonNull String shotId, @NonNull String access_token);
+    Observable<Like> likeShot(@NonNull String shotId, @NonNull String access_token);
+
+    /**
+     * DELETE like
+     * @param shotId shot id
+     * @param access_token ACCESS TOKEN
+     */
+    void unlikeShot(@NonNull String shotId, @NonNull String access_token);
 }

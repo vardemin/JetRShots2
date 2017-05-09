@@ -39,7 +39,6 @@ public class LikesListAdapter extends RealmRecyclerViewAdapter<Like,LikesListAda
         Like like = getItem(position);
         if (like==null)
             return;
-        Log.d("LIKE ID: ", String.valueOf(like.getId()));
         Picasso.with(holder.avatar.getContext())
                 .load(like
                 .getUser().getAvatar_url())

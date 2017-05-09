@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -44,5 +45,8 @@ public interface ServiceApi {
     Observable<Comment> postCommentToShot(@Path("shot") String shot, @Query("body") String text, @Query("access_token") String token);
 
     @POST("shots/{shot}/like")
-    Call<String> likeShot(@Path("shot") String shotId, @Query("access_token") String token);
+    Observable<Like> likeShot(@Path("shot") String shotId, @Query("access_token") String token);
+
+    @DELETE("shots/{shot}/like")
+    Call<Void> unlikeShot(@Path("shot") String shotId, @Query("access_token") String token);
 }

@@ -64,7 +64,7 @@ public class ShotsListAdapter extends RealmRecyclerViewAdapter<Shot,ShotsListAda
         holder.commentsCount.setText(String.valueOf(shot.getComments_count()));
         holder.likesCount.setText(String.valueOf(shot.getLikes_count()));
 
-        holder.likeBtn.setImageResource(shot.isLiked()?R.drawable.ic_liked:R.drawable.ic_action_like);
+        holder.likeBtn.setImageResource(shot.getLiked()?R.drawable.ic_liked:R.drawable.ic_action_like);
 
         if(listener==null)
             return;
@@ -76,7 +76,7 @@ public class ShotsListAdapter extends RealmRecyclerViewAdapter<Shot,ShotsListAda
                 case R.id.shot_action_comment:
                     listener.onComment(shot.getId());break;
                 case R.id.shot_action_like:
-                    holder.likeBtn.setImageResource(shot.isLiked()?R.drawable.ic_liked:R.drawable.ic_action_like);
+                    holder.likeBtn.setImageResource(shot.getLiked()?R.drawable.ic_action_like:R.drawable.ic_liked);
                     listener.onLike(shot.getId());break;
             }
         };
